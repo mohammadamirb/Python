@@ -370,7 +370,7 @@ for ii in range(len(nm)):
 
   E, V = Band_Str(k, H00, H01, H02)                                             # Calculating band structutre.
   Ev, DOS = DOS_band(E)                                                         # Calculating DOS.
-
+  plt.figure()
   plt.subplot(1,3,1)
   plothlp(coor_v, acc, sps=None, cmdd='noatom')
   plothlp(pos_sublat[0], 0, ss[0])
@@ -412,24 +412,19 @@ for ii in range(len(nm)):
 # H02_P = H_Gen(coords, NC[:,:,2])
 # E_P, _ = Band_Str(k, H00, H01, H02)                                           # Energy eigenvalues for the perfect crystall
 
-# Need a better plot from atomic structure?
-from datetime import datetime
-current_time = datetime.now().time()
-print("Current Time is:", current_time)
+# Need a better plot from atomic structure? Then, uncomment the following lines.  
+# alll=[]
+# for jj in range(9):
+#     alll.append(NC_v[:, :, jj])
+# alll = np.vstack(alll)
 
-alll=[]
-for jj in range(9):
-    alll.append(NC_v[:, :, jj])
-alll = np.vstack(alll)
+# plt.figure()
+# plothlp(alll, acc, sps=None, cmdd='noatom')
+# plothlp(pos_sublat[0], 0, ss[0])
+# plothlp(pos_sublat[1], 0, ss[1])
 
-plothlp(alll, acc, sps=None, cmdd='noatom')
-plothlp(pos_sublat[0], 0, ss[0])
-plothlp(pos_sublat[1], 0, ss[1])
+# pts = np.column_stack([    ucpoint[:, 0],    ucpoint[:, 1],
+#       np.array([ucpoint[0, 1], ucpoint[1, 3]]),ucpoint[:, 3],ucpoint[:, 2], ucpoint[:, 0] ])
 
-pts = np.column_stack([    ucpoint[:, 0],    ucpoint[:, 1],
-      np.array([ucpoint[0, 1], ucpoint[1, 3]]),ucpoint[:, 3],ucpoint[:, 2], ucpoint[:, 0] ])
-
-plt.plot(pts[0, :], pts[1, :], '-k')
-
-#cifout(coor_v,vec)
-#cifout(coords,vec)                                                             # Perfect Cell!
+# plt.plot(pts[0, :], pts[1, :], '-k')
+# plt.show()
